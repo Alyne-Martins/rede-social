@@ -1,0 +1,76 @@
+/*
+font-family: 'Indie Flower', cursive;
+font-family: 'Lato', sans-serif;*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Lato', sans-serif;
+	background-color: #e7e7e7;
+	width: 100vw;
+	height: 100vh;
+}
+
+body#bg-body {
+	background-image: url("../img/background.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding: 10px;
+}
+
+.logo {
+	font-family: 'Indie Flower', cursive;
+	color: #eebe0d;
+}
+
+.form-control {
+	background: #f7f7f7;
+	border: 1px solid #d4d4d4;
+	border-radius: 5px;
+	font-size: 14px;
+	height: 40px;
+}
+
+.box-white {
+	background: #ffffff none repeat scroll 0 0;
+	border-radius: 2px;
+	margin: 10px auto 30px;
+	max-width: 80%;
+	padding: 50px 70px 70px 71px;
+}
+
+.titulo {
+	color: #777777;
+	font-size: 20px;
+	text-align: left;
+
+}
+
+.box-input {
+	margin-bottom: 10px;
+}
+
+.login-form {
+	text-align: center;
+}
+
+.btn.btn-primary {
+	background: #eebe0d;
+	border: #eebe0d;
+	color: #ffffff;
+	font-size: 16px;
+	width: 100%;
+	height: 40px;
+	padding: 0;
+}
+
+.forgot-password {
+	color: #444444;
+	font-size: 15px;
+	text-decoration: underline;
+}
+
+.forgot-password:hover {
+	color: #eebe0d;
+}
