@@ -6,7 +6,6 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Lato', sans-serif;
-	background-color: #e7e7e7;
 	width: 100vw;
 	height: 100vh;
 }
@@ -73,4 +72,26 @@ body#bg-body {
 
 .forgot-password:hover {
 	color: #eebe0d;
+}
+
+/*PAGINA HOME*/
+
+body#bg-body-home {
+	background: #ede7d3;
+}
+
+.box-color {
+	background-color: #f8f9fa;
+}
+
+.box-post {
+	border: 1px solid #eebe0d;
+}
+
+.teste {
+	border: 3px solid orange;
+}
+
+.btn-light {
+	background-color: #eebe0d;
 }
