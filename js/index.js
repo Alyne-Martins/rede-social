@@ -4,8 +4,9 @@ $(document).ready(function () {
 
 		var email = $("#sign-up-email").val();
 		var password = $("#sign-up-password").val();
-		firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
-			window.location = "home.html";
+		firebase.auth().createUserWithEmailAndPassword(email, password).then(function (response) {
+
+			window.location = "home.html?id=" + response.user.uid;
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;
@@ -18,8 +19,8 @@ $(document).ready(function () {
 
 		var email = $("#sign-in-email").val();
 		var password = $("#sign-in-password").val();
-		firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
-			window.location = "home.html";
+		firebase.auth().signInWithEmailAndPassword(email, password).then(function (response) {
+			window.location = "home.html?id=" + response.user.uid;
 		}).catch(function (error) {
 			// Handle Errors here.
 			var errorCode = error.code;

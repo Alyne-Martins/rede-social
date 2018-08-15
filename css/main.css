@@ -86,12 +86,19 @@ body#bg-body-home {
 
 .box-post {
 	border: 1px solid #eebe0d;
+	margin: 15px;
+	padding: 10px;
 }
 
-.teste {
-	border: 3px solid orange;
-}
+.box-msg {}
+
 
 .btn-light {
 	background-color: #eebe0d;
+}
+
+.btn-outline-warning {
+	background-color: #ede7d3;
+	color: #5e5e5e;
+	border: none;
 }
