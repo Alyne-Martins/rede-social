@@ -26,7 +26,7 @@ $(document).ready(function () {
 });
 //função de criar posts no HTMl
 function createPost(text, key) {
-	$(".box-list").append("<div class='box-post d-flex mb-3'><div class='mr-auto'><span class='box-msg' data-edit-id=" + key + ">" + text + "</span></div><button type='button' class='btn btn-outline-warning' data-posts-id=" + key + ">Deletar</button><button type='button' class='btn btn-outline-warning ml-2' data-edit-id=" + key + ">Editar</button></div>");
+	$(".box-list").append("<div class='box-post d-flex mb-3'><div class='mr-auto'><span class='box-msg' data-newedit-id=" + key + ">" + text + "</span></div><button type='button' class='btn btn-outline-warning' data-posts-id=" + key + ">Deletar</button><button type='button' class='btn btn-outline-warning ml-2' data-edit-id=" + key + ">Editar</button></div>");
 	//Apagar posts
 	$("button[data-posts-id=" + key + "]").click(function () {
 		database.ref("posts/" + USER_ID + "/" + key).remove();
@@ -34,12 +34,17 @@ function createPost(text, key) {
 	})
 	//Editar posts
 	$("button[data-edit-id=" + key + "]").click(function () {
-		var newText = prompt("Altere o post:" + text);
-		$("span[data-edit-id=" + key + "]").html(newText);
-		database.ref("posts/" + USER_ID + "/" + key).update({
-			text: newText
-		});
+		$("span[data-newedit-id=" + key + "]").append("<div><input type='text' class='form-control box-input new-post' placeholder='" + text + "'><button type='button' class='editar btn btn-outline-warning ml-2' data-btedit-id=" + key + ">Finalizar Edição</button></div>");
 
+		//salvar edição
+		$("button[data-btedit-id=" + key + "]").click(function () {
+			var newText = $(".new-post").val();
+			$("span[data-newedit-id=" + key + "]").html(newText);
+			database.ref("posts/" + USER_ID + "/" + key).update({
+				text: newText
+			});
+			$(this).parent().remove();
+		})
 
 	})
 
