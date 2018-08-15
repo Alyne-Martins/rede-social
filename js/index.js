@@ -1,19 +1,19 @@
 $(document).ready(function () {
+	// Registrando novo usuário
 	$("#register").click(function (event) {
 		event.preventDefault();
-
 		var email = $("#sign-up-email").val();
 		var password = $("#sign-up-password").val();
 		firebase.auth().createUserWithEmailAndPassword(email, password).then(function (response) {
 
 			window.location = "home.html?id=" + response.user.uid;
 		}).catch(function (error) {
-			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(errorCode, errorMessage);
 		});
 	});
+	// Fazendo o login
 	$("#login").click(function () {
 		event.preventDefault();
 
@@ -22,7 +22,6 @@ $(document).ready(function () {
 		firebase.auth().signInWithEmailAndPassword(email, password).then(function (response) {
 			window.location = "home.html?id=" + response.user.uid;
 		}).catch(function (error) {
-			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			console.log(errorCode, errorMessage);
