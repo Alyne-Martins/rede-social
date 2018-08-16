@@ -52,7 +52,7 @@ $(document).ready(function () {
 				var name = childData.name;
 
 				//Chamando função que coloca amigos no  html
-				createFriends(name, Idfriend);
+				createFriends(name, Idfriend, friend);
 			});
 
 		})
@@ -104,6 +104,15 @@ function createUsers(name, key) {
 			friendId: key
 		});
 		$("button[data-friend-id=" + key + "]").click(function () {
+			database.ref("friend/" + USER_ID).once("value")
+				.then(function (snapshot) {
+					snapshot.forEach(function (childSnapshot) {
+						var childKey = childSnapshot.key;
+						var childData = childSnapshot.val();
+						database.ref("friend/" + USER_ID + "/" + childKey).remove();
+
+					});
+				})
 			$(this).parent().remove();
 		})
 	})
@@ -116,8 +125,14 @@ function createFriends(name, key) {
 		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn' data-friend-id=" + key + ">deixar de seguir</button></div>");
 	}
 	$("button[data-friend-id=" + key + "]").click(function () {
-		//		database.ref('friend/' + USER_ID).remove();
-		console.log(key);
+		database.ref("friend/" + USER_ID).once("value")
+			.then(function (snapshot) {
+				snapshot.forEach(function (childSnapshot) {
+					var childKey = childSnapshot.key;
+					var childData = childSnapshot.val();
+					database.ref("friend/" + USER_ID + "/" + childKey).remove();
+				});
+			})
 		$(this).parent().remove();
 	})
 
