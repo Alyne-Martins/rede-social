@@ -97,11 +97,15 @@ function createUsers(name, key) {
 		$(".suggestion-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn btn-outline-warning' data-user-id=" + key + ">seguir</button></div>");
 	}
 	$("button[data-user-id=" + key + "]").click(function () {
+		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn' data-friend-id=" + key + ">deixar de seguir</button></div>");
 		$(this).parent().remove();
 		database.ref('friend/' + USER_ID).push({
 			name: name,
 			friendId: key
 		});
+		$("button[data-friend-id=" + key + "]").click(function () {
+			$(this).parent().remove();
+		})
 	})
 }
 
@@ -109,6 +113,12 @@ function createUsers(name, key) {
 function createFriends(name, key) {
 
 	if (key !== USER_ID) {
-		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn' data-user-id=" + key + " disable>seguindo</button></div>");
+		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn' data-friend-id=" + key + ">deixar de seguir</button></div>");
 	}
+	$("button[data-friend-id=" + key + "]").click(function () {
+		//		database.ref('friend/' + USER_ID).remove();
+		console.log(key);
+		$(this).parent().remove();
+	})
+
 }
