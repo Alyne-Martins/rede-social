@@ -122,3 +122,9 @@ body#bg-body-home {
 	border: 1px solid #eebe0d;
 	background-color: #f7f7f7;
 }
+
+footer {
+	background-color: #eebe0d;
+	height: 50px;
+	width: 100vw;
+}

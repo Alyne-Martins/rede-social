@@ -38,7 +38,7 @@ $(document).ready(function () {
 		});
 		var newPostKey = postFromDB.key;
 		//Chamando função que coloca novo post no html
-		createPost(msg, newPostKey);
+		createPost(msg, newPostKey, contador);
 		$(".message").val("");
 	});
 });
