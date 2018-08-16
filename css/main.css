@@ -90,7 +90,23 @@ body#bg-body-home {
 	padding: 10px;
 }
 
-.box-msg {}
+.icon-star {
+	color: #ccc;
+}
+
+.icon-star:hover {
+	color: #eebe0d;
+}
+
+.star {
+	color: #eebe0d;
+}
+
+.user-name {
+	text-align: center;
+	/*	background-color: rgba(238, 190, 13, 0.5);*/
+	background-color: #f7f7f7;
+}
 
 
 .btn-light {

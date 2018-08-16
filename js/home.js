@@ -1,6 +1,12 @@
 var database = firebase.database();
 var USER_ID = window.location.search.match(/\?id=(.*)/)[1];
 $(document).ready(function () {
+
+	database.ref("users/" + USER_ID).once("value")
+		.then(function (snapshot) {
+			var userInfo = snapshot.val();
+			$(".user-name").text("Olá " + userInfo.name)
+		})
 	//	Pegando post do firebase
 	database.ref('/posts/' + USER_ID).once('value').then(function (snapshot) {
 		snapshot.forEach(function (childSnapshot) {
@@ -15,8 +21,10 @@ $(document).ready(function () {
 	$(".post").click(function (event) {
 		event.preventDefault();
 		var msg = $(".message").val();
+		var contador = 0;
 		var postFromDB = database.ref("posts/" + USER_ID).push({
-			text: msg
+			text: msg,
+			curtidas: contador
 		});
 		var newPostKey = postFromDB.key;
 		//Chamando função que coloca novo post no html
@@ -47,5 +55,6 @@ function createPost(text, key) {
 		})
 
 	})
+
 
 }
