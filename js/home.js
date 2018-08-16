@@ -1,11 +1,20 @@
 var database = firebase.database();
 var USER_ID = window.location.search.match(/\?id=(.*)/)[1];
 $(document).ready(function () {
-
+	//	pegando o Nome do usuário
 	database.ref("users/" + USER_ID).once("value")
 		.then(function (snapshot) {
 			var userInfo = snapshot.val();
 			$(".user-name").text("Olá " + userInfo.name)
+		})
+	//  Pegando usuários do firebase
+	database.ref("users").once("value")
+		.then(function (snapshot) {
+			snapshot.forEach(function (childSnapshot) {
+				var childKey = childSnapshot.key;
+				var childData = childSnapshot.val();
+				createUsers(childData.name, childKey);
+			});
 		})
 	//	Pegando post do firebase
 	database.ref('/posts/' + USER_ID).once('value').then(function (snapshot) {
@@ -13,8 +22,9 @@ $(document).ready(function () {
 			var childKey = childSnapshot.key;
 			var childData = childSnapshot.val();
 			var text = childData.text;
+			var star = childData.curtidas;
 			//Chamando função que coloca post do firebase no html
-			createPost(text, childKey);
+			createPost(text, childKey, star);
 		});
 	});
 	//	Criando novo post do firebase
@@ -33,8 +43,8 @@ $(document).ready(function () {
 	});
 });
 //função de criar posts no HTMl
-function createPost(text, key) {
-	$(".box-list").append("<div class='box-post d-flex mb-3'><div class='mr-auto'><span class='box-msg' data-newedit-id=" + key + ">" + text + "</span></div><button type='button' class='btn btn-outline-warning' data-posts-id=" + key + ">Deletar</button><button type='button' class='btn btn-outline-warning ml-2' data-edit-id=" + key + ">Editar</button></div>");
+function createPost(text, key, star) {
+	$(".box-list").append("<div class='box-post d-flex mb-3 '><div class='mr-auto'><i class='icon-star mr-4' data-star-id=" + key + ">" + star + "</i><span class='box-msg' data-newedit-id=" + key + ">" + text + "</span></div><button type='button' class='btn btn-outline-warning btn-post' data-posts-id=" + key + ">Deletar</button><button type='button' class='btn btn-outline-warning btn-post ml-2' data-edit-id=" + key + ">Editar</button></div>");
 	//Apagar posts
 	$("button[data-posts-id=" + key + "]").click(function () {
 		database.ref("posts/" + USER_ID + "/" + key).remove();
@@ -53,8 +63,27 @@ function createPost(text, key) {
 			});
 			$(this).parent().remove();
 		})
-
 	})
+	// curtidas
+	$("i[data-star-id=" + key + "]").click(function () {
+		var starCont = star + 1;
+		$(this).addClass("star");
+		$(this).html(starCont);
+		database.ref("posts/" + USER_ID + "/" + key).update({
+			curtidas: starCont
+		});
+	})
+}
+// criando usuários
+function createUsers(name, key) {
+	if (key !== USER_ID) {
+		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn btn-outline-warning' data-user-id=" + key + ">seguir</button></div>");
+	}
 
+	$("button[data-user-id=" + key + "]").click(function () {
+		database.ref('friendship/' + USER_ID).push({
+			friendId: key
+		});
+	})
 
 }

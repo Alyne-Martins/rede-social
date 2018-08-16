@@ -104,7 +104,6 @@ body#bg-body-home {
 
 .user-name {
 	text-align: center;
-	/*	background-color: rgba(238, 190, 13, 0.5);*/
 	background-color: #f7f7f7;
 }
 
@@ -113,8 +112,13 @@ body#bg-body-home {
 	background-color: #eebe0d;
 }
 
-.btn-outline-warning {
+.btn-post {
 	background-color: #ede7d3;
 	color: #5e5e5e;
 	border: none;
+}
+
+.box-user {
+	border: 1px solid #eebe0d;
+	background-color: #f7f7f7;
 }
