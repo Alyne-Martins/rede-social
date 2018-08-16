@@ -41,7 +41,23 @@ $(document).ready(function () {
 		createPost(msg, newPostKey, contador);
 		$(".message").val("");
 	});
+	//	pegando amigos
+	database.ref("friend/" + USER_ID).once("value")
+		.then(function (snapshot) {
+			var friend = snapshot.val();
+			snapshot.forEach(function (teste) {
+				var childKey = teste.key;
+				var childData = teste.val();
+				var Idfriend = childData.friendId;
+				var name = childData.name;
+
+				//Chamando função que coloca amigos no  html
+				createFriends(name, Idfriend);
+			});
+
+		})
 });
+
 //função de criar posts no HTMl
 function createPost(text, key, star) {
 	$(".box-list").append("<div class='box-post d-flex mb-3 '><div class='mr-auto'><i class='icon-star mr-4' data-star-id=" + key + ">" + star + "</i><span class='box-msg' data-newedit-id=" + key + ">" + text + "</span></div><button type='button' class='btn btn-outline-warning btn-post' data-posts-id=" + key + ">Deletar</button><button type='button' class='btn btn-outline-warning btn-post ml-2' data-edit-id=" + key + ">Editar</button></div>");
@@ -76,14 +92,23 @@ function createPost(text, key, star) {
 }
 // criando usuários
 function createUsers(name, key) {
-	if (key !== USER_ID) {
-		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn btn-outline-warning' data-user-id=" + key + ">seguir</button></div>");
-	}
 
+	if (key !== USER_ID) {
+		$(".suggestion-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn btn-outline-warning' data-user-id=" + key + ">seguir</button></div>");
+	}
 	$("button[data-user-id=" + key + "]").click(function () {
-		database.ref('friendship/' + USER_ID).push({
+		$(this).parent().remove();
+		database.ref('friend/' + USER_ID).push({
+			name: name,
 			friendId: key
 		});
 	})
+}
 
+// criando usuários
+function createFriends(name, key) {
+
+	if (key !== USER_ID) {
+		$(".friends-list").append("<div class='box-user p-3 m-2 d-flex flex-column justify-content-center'><span class='mb-2'>" + name + "</span><button type='button' class='btn' data-user-id=" + key + " disable>seguindo</button></div>");
+	}
 }
