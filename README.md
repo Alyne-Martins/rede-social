@@ -3,7 +3,7 @@
 
 # Rede Social: V.1.0.0
 
-Este é um projeto realizado no Sprint 3 no bootcampo da Laboratoria.
+Este é um projeto realizado no Sprint 3 no bootcamp da Laboratoria.
 
 Projeto hospedado no firebase Hosting URL: https://rede-social-lab.firebaseapp.com
 
