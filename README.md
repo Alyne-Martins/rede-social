@@ -4,7 +4,14 @@
 # Rede Social: V.1.0.0
 
 Este é um projeto realizado no Sprint 3 no bootcampo da Laboratoria.
+
 Projeto hospedado no firebase Hosting URL: https://rede-social-lab.firebaseapp.com
+
+```
+Dados para acesso: alyne@gmail.com 
+senha:123456 
+obs: se desejar pode criar um novo cadastro
+```
 
 ## Sobre o produto
 
