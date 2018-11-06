@@ -1,3 +1,6 @@
+![rede_1](https://user-images.githubusercontent.com/39528553/48037816-3015b980-e155-11e8-8595-c008858aecea.PNG)
+![rede_2](https://user-images.githubusercontent.com/39528553/48037898-766b1880-e155-11e8-8caf-de5405a202f2.PNG)
+
 # Rede Social: V.1.0.0
 
 Este é um projeto final realizado no Sprint 3 no bootcampo da Laboratoria.
