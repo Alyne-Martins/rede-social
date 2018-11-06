@@ -23,6 +23,7 @@ Instagram, Snapchat, Twitter, Facebook, Twitch, Linkedin, as redes sociais têm 
 - JavaScript
 - Jquery
 - firebase
+- Bootstrap
 
 #### versão 1.0.0 (released)
 
