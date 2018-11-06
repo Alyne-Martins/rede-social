@@ -90,15 +90,41 @@ body#bg-body-home {
 	padding: 10px;
 }
 
-.box-msg {}
+.icon-star {
+	color: #ccc;
+}
+
+.icon-star:hover {
+	color: #eebe0d;
+}
+
+.star {
+	color: #eebe0d;
+}
+
+.user-name {
+	text-align: center;
+	background-color: #f7f7f7;
+}
 
 
 .btn-light {
 	background-color: #eebe0d;
 }
 
-.btn-outline-warning {
+.btn-post {
 	background-color: #ede7d3;
 	color: #5e5e5e;
 	border: none;
+}
+
+.box-user {
+	border: 1px solid #eebe0d;
+	background-color: #f7f7f7;
+}
+
+footer {
+	background-color: #eebe0d;
+	height: 50px;
+	width: 100vw;
 }

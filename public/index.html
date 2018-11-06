@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/main.css">
 	<!--	FIREBASE-->
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-auth.js"></script>
 	<script src="firebase-config.js"></script>
 	<script>
@@ -42,11 +43,10 @@
 							<p class="titulo">Login:</p>
 							<input type="text" class="form-control box-input" placeholder="Email ou nome" id="sign-in-email">
 							<input type="password" class="form-control box-input" placeholder="Password" id="sign-in-password">
-							<button type="submit" class="btn btn-primary mb-3" id="login">ENTRAR	</button>
+							<button type="submit" class="btn btn-primary mb-3" id="login">ENTRAR</button>
 							<a href="#" class="forgot-password mt-2">Esqueceu a senha?</a>
 						</form>
 					</div>
-
 					<!--REGISTER-->
 					<div class="col-lg-6">
 						<form>
